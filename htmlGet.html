@@ -61,6 +61,16 @@
                 </tr>
               }
               }
+
+              //executer la requete chaque 10 secondes "a modifier"
+              $(document).ready(function(){
+                new buildList(); 
+              });
+              $('div.feedback-box').html(feedback).delay(10000).queue(function() {
+                  new buildList(); 
+                  });
+
+              }
             });
           }
     </script>
