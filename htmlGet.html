@@ -3,39 +3,44 @@
 
   <head>
     <body>
-
-     
-
         <br>
-        Donnees <br>
+        Donnees 
+        <br>
 
         <table id="table1">
-
         </table>
 
-        <table id="table2">
+        <br><br>
 
+        <table id="table2">
         </table>
 
         <script>
-       
+          //fonction de recuperation des donnees
           buildList()
           function buildList(){
           
+            //declaration des tables
             var tab1 = document.getElementById('table1')
             var tab2 = document.getElementById('table2')
+
+            //lien vers le endpoint de data
             var url = 'http://192.168.2.113:8000/data/'
 
+            //requete fetch
             fetch(url)
-            .then((resp) => resp.json())
+            .then((resp) => resp.json())  //repondre en json
             .then(function(data){
               console.log('Data', data)
               
               var list = data
+
+              //si les donnees envoyees par le premier ESP32
               if(list.nameMicro = 'ESP32A'){
               for (var i in list){
-                tab1.innerHTML +=
+                tab1.innerHTML +=           //stockage de donnees dans table 1
 
+                //stockage des doonnees
                 <tr>
                   <td>${list.nameMicro}</td>
                   <td>${list.nameCapteur}</td>
@@ -43,24 +48,22 @@
               </tr>
               }
 
+              //si les donnees envoyees par le deuxieme ESP32
               if(list.nameMicro = 'ESP32B'){
                 for (var i in list){
-                  tab2.innerHTML +=
+                  tab2.innerHTML +=         //stockage de donnees dans table 2
   
+                  //stockage des doonnees
                   <tr>
                     <td>${list.nameMicro}</td>
                     <td>${list.nameCapteur}</td>
                     <td>${list.donnee}</td>
                 </tr>
               }
-              
               }
             });
-
           }
     </script>
     </body>
   </head>
-
-
 </html>
