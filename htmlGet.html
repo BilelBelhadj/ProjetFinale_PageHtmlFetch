@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <body>
+
+     
+
+        <br>
+        Donnees <br>
+
+        <table id="table1">
+
+        </table>
+
+        <table id="table2">
+
+        </table>
+
+        <script>
+       
+          buildList()
+          function buildList(){
+          
+            var tab1 = document.getElementById('table1')
+            var tab2 = document.getElementById('table2')
+            var url = 'http://192.168.2.113:8000/data/'
+
+            fetch(url)
+            .then((resp) => resp.json())
+            .then(function(data){
+              console.log('Data', data)
+              
+              var list = data
+              if(list.nameMicro = 'ESP32A'){
+              for (var i in list){
+                tab1.innerHTML +=
+
+                <tr>
+                  <td>${list.nameMicro}</td>
+                  <td>${list.nameCapteur}</td>
+                  <td>${list.donnee}</td>
+              </tr>
+              }
+
+              if(list.nameMicro = 'ESP32B'){
+                for (var i in list){
+                  tab2.innerHTML +=
+  
+                  <tr>
+                    <td>${list.nameMicro}</td>
+                    <td>${list.nameCapteur}</td>
+                    <td>${list.donnee}</td>
+                </tr>
+              }
+              
+              }
+            });
+
+          }
+    </script>
+    </body>
+  </head>
+
+
+</html>
